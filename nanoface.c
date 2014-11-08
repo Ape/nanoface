@@ -39,12 +39,12 @@ static int nanoface_probe(struct usb_interface *interface,
 	else
 	{
 		printk(KERN_INFO "ALVA Nanoface (%04X:%04X) connected\n", id->idVendor,
-			   id->idProduct);
+		       id->idProduct);
 
 		dev = interface_to_usbdev(interface);
 		usb_fill_control_urb(init_request, dev, usb_sndctrlpipe(dev, 0),
-							 init_setup, init_data, sizeof(init_data),
-							 init_complete_callback, 0);
+		                     init_setup, init_data, sizeof(init_data),
+		                     init_complete_callback, 0);
 
 		status = usb_submit_urb(init_request, 0);
 		if (status != 0)
