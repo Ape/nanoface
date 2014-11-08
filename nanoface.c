@@ -32,12 +32,9 @@ static int nanoface_probe(struct usb_interface *interface,
 	struct urb *init_request;
 
 	init_request = usb_alloc_urb(0, 0);
-	if (init_request == 0)
-	{
+	if (init_request == 0) {
 		printk(KERN_INFO "ALVA Nanoface initialization failed: Cannot allocate memory for URB request\n");
-	}
-	else
-	{
+	} else {
 		printk(KERN_INFO "ALVA Nanoface (%04X:%04X) connected\n",
 		       id->idVendor, id->idProduct);
 
@@ -48,8 +45,7 @@ static int nanoface_probe(struct usb_interface *interface,
 				     init_complete_callback, 0);
 
 		status = usb_submit_urb(init_request, 0);
-		if (status != 0)
-		{
+		if (status != 0) {
 			printk(KERN_INFO "ALVA Nanoface initialization failed: Error %d when submitting URB\n",
 			       status);
 			return status;
