@@ -52,7 +52,7 @@ static int nanoface_probe(struct usb_interface *interface,
 		}
 	}
 
-	// Do not manage the device
+	/* do not manage the device */
 	return -ENODEV;
 }
 
@@ -64,7 +64,7 @@ static void nanoface_disconnect(struct usb_interface *interface)
 static struct usb_device_id nanoface_table[] =
 {
 	{ USB_DEVICE(0x0a4a, 0xaffe) },
-	{ }
+	{ /* Terminating entry */ }
 };
 
 MODULE_DEVICE_TABLE (usb, nanoface_table);
